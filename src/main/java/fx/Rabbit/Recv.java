@@ -5,6 +5,8 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
+import java.nio.charset.StandardCharsets;
+
 public class Recv
 {
 
@@ -12,6 +14,8 @@ public class Recv
     public static void main(String[] args) throws Exception
     {
         //add comment
+
+        //test
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
@@ -24,7 +28,7 @@ public class Recv
         System.out.println(" [*] Waiting for message. To exit press CTRL+C");
 
         DeliverCallback callback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), "UTF-8");
+            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
             System.out.println(" [x] Received: " + message );
         };
 
